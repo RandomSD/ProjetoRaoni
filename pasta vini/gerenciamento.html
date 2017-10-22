@@ -1,0 +1,132 @@
+<?php
+ ob_start();
+ session_start();
+ require_once 'dbconnect.php';
+ 
+
+ if( !isset($_SESSION['empresa1']) ) {
+  header("Location: index.php");
+  exit;
+ }
+
+ $res=mysql_query("SELECT userName FROM users WHERE Id=".$_SESSION['empresa1']);
+ $userRow=mysql_fetch_array($res);
+?>
+<!DOCTYPE html>
+
+<html lang"pt-br"> 
+	<head>
+		<title>Gerenciamento</title>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+		<link rel="shortcut icon" href="_css/iconesite.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="C:\wampp64\www\empresa1\_css\estilos.css">
+
+	</head>
+
+	<body>
+		
+	<div id="menu">
+		<nav>
+			<ul>
+				<li><a href="" title="Sair/logout"><i class="material-icons left">exit_to_app</i>Sair</a></li>
+				<li><a href=""><i class="material-icons left">content_paste</i>Relatorios</a></li>
+				<li><a href="C:\Users\Reinaldo Computer\Desktop\site teste\_paginas\consultar.html"><i class="material-icons left">view_list</i>Consultar lista de alunos</a></li>
+				<li><a href=""><i class="material-icons left">border_color</i>cadastro</a></li>
+				<li class="esquerda"><a href="">img logo</a></li>
+
+
+			</ul>
+		</nav>
+	</div>
+
+	<div align="center">
+		
+		<ul id="corpo">
+			Bem-Vindo
+		</ul>
+		
+	</div>
+	
+	 <div ="grafico1">	
+		<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Sexo', 'Quantidade'],
+          ['Feminino',     11],
+          ['Masculino',      7],
+          ['Outros',  2],
+        ]);
+
+        var options = {
+          title: 'Grafico por sexo'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+		<div id="piechart" style="width: 700px; height: 300px; float: right;"></div>
+
+	  </div>
+	
+
+	<div id="grafico2">
+		
+		<script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Quantidade", "alunos", { role: "style" } ],
+        ["Paulista", 10, "#b87333"],
+        ["Torrinha", 10, "silver"],
+        ["Recife", 19, "gold"],
+        ["Jaboatão", 21, "color: #e5e4e2"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Grafico de alunos por area",
+        width: 600,
+        height: 300,
+        bar: {groupWidth: "55%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+
+  	<div id="columnchart_values" style="width: 100px; height: 400px;"></div>
+
+	</div>
+
+	<div id="rodape">
+
+	<footer class="alinhar">
+			
+			<p class="rodape">Copyright &copy; 2016-2017 Todos direitos reservados a empresa R.S.D.</p>
+
+	</footer>
+
+	</div>
+
+	</body>
+
+
+</html>
