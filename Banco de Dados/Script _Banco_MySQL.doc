@@ -15,58 +15,6 @@ CREATE SCHEMA IF NOT EXISTS `EmpresaX` DEFAULT CHARACTER SET utf8 ;
 USE `EmpresaX` ;
 
 -- -----------------------------------------------------
--- Table `EmpresaX`.`Cidade`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `EmpresaX`.`Cidade` (
-  `idCidade` INT NOT NULL AUTO_INCREMENT,
-  `Nome_Cidade` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`idCidade`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `EmpresaX`.`Bairro`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `EmpresaX`.`Bairro` (
-  `idBairro` INT NOT NULL AUTO_INCREMENT,
-  `Nome_Bairro` VARCHAR(50) NOT NULL,
-  `BCidade_idCidade` INT NOT NULL,
-  PRIMARY KEY (`idBairro`),
-  INDEX `fk_Bairro_Cidade1_idx` (`BCidade_idCidade` ASC),
-  CONSTRAINT `fk_Bairro_Cidade1`
-    FOREIGN KEY (`BCidade_idCidade`)
-    REFERENCES `EmpresaX`.`Cidade` (`idCidade`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `EmpresaX`.`Endereco`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `EmpresaX`.`Endereco` (
-  `idEndereco` INT NOT NULL AUTO_INCREMENT,
-  `CEP` INT(10) NOT NULL,
-  `Nome_Rua` VARCHAR(50) NOT NULL,
-  `EBairro_idBairro` INT NOT NULL,
-  `ECidade_idCidade` INT NOT NULL,
-  PRIMARY KEY (`idEndereco`),
-  INDEX `fk_Endereco_Bairro1_idx` (`EBairro_idBairro` ASC),
-  INDEX `fk_Endereco_Cidade1_idx` (`ECidade_idCidade` ASC),
-  CONSTRAINT `fk_Endereco_Bairro1`
-    FOREIGN KEY (`EBairro_idBairro`)
-    REFERENCES `EmpresaX`.`Bairro` (`idBairro`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Endereco_Cidade1`
-    FOREIGN KEY (`ECidade_idCidade`)
-    REFERENCES `EmpresaX`.`Cidade` (`idCidade`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `EmpresaX`.`Aluno`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `EmpresaX`.`Aluno` (
@@ -77,31 +25,16 @@ CREATE TABLE IF NOT EXISTS `EmpresaX`.`Aluno` (
   `Nasc_Al` DATE NOT NULL,
   `Telefone_Al` BIGINT(10) NULL,
   `Celular_Al` BIGINT(11) NOT NULL,
-  `AEndereco_idEndereco` INT NOT NULL,
+  `Email` VARCHAR(50) NOT NULL,
+  `CEP` BIGINT(8) NOT NULL,
+  `Endereco` VARCHAR(50) NOT NULL,
   `Casa_Al` INT NULL,
-  `ABairro_idBairro` INT NOT NULL,
-  `ACidade_idCidade` INT NOT NULL,
+  `Bairro` VARCHAR(50) NOT NULL,
+  `Cidade` VARCHAR(50) NOT NULL,
   `DataEntrada` DATE NOT NULL,
   `DiaPag` INT NOT NULL,
-  PRIMARY KEY (`idAluno`),
-  INDEX `fk_Aluno_Endereco1_idx` (`AEndereco_idEndereco` ASC),
-  INDEX `fk_Aluno_Bairro1_idx` (`ABairro_idBairro` ASC),
-  INDEX `fk_Aluno_Cidade1_idx` (`ACidade_idCidade` ASC),
-  CONSTRAINT `fk_Aluno_Endereco1`
-    FOREIGN KEY (`AEndereco_idEndereco`)
-    REFERENCES `EmpresaX`.`Endereco` (`idEndereco`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Aluno_Bairro1`
-    FOREIGN KEY (`ABairro_idBairro`)
-    REFERENCES `EmpresaX`.`Bairro` (`idBairro`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Aluno_Cidade1`
-    FOREIGN KEY (`ACidade_idCidade`)
-    REFERENCES `EmpresaX`.`Cidade` (`idCidade`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `Status` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`idAluno`))
 ENGINE = InnoDB;
 
 
@@ -114,34 +47,18 @@ CREATE TABLE IF NOT EXISTS `EmpresaX`.`Funcionario` (
   `CPF_Fun` BIGINT(13) NOT NULL,
   `RG_Fun` BIGINT(10) NOT NULL,
   `Nasc_Fun` DATE NOT NULL,
-  `Telefone_Fun` BIGINT(10) NOT NULL,
+  `Telefone_Fun` BIGINT(10) NULL,
   `Celular_Fun` BIGINT(11) NOT NULL,
   `Email` VARCHAR(50) NOT NULL,
-  `FEndereco_idEndereco` INT NOT NULL,
+  `CEP` BIGINT(8) NOT NULL,
+  `Endereco` VARCHAR(50) NOT NULL,
   `Casa_Fun` INT NULL,
-  `FBairro_idBairro` INT NOT NULL,
-  `FCidade_idCidade` INT NOT NULL,
+  `Bairro` VARCHAR(50) NOT NULL,
+  `Cidade` VARCHAR(50) NOT NULL,
   `Cargo` VARCHAR(30) NOT NULL,
   `Admissao` DATE NOT NULL,
-  PRIMARY KEY (`idFuncionario`),
-  INDEX `fk_Funcionario_Bairro1_idx` (`FBairro_idBairro` ASC),
-  INDEX `fk_Funcionario_Cidade1_idx` (`FCidade_idCidade` ASC),
-  INDEX `fk_Funcionario_Endereco1_idx` (`FEndereco_idEndereco` ASC),
-  CONSTRAINT `fk_Funcionario_Bairro1`
-    FOREIGN KEY (`FBairro_idBairro`)
-    REFERENCES `EmpresaX`.`Bairro` (`idBairro`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Funcionario_Cidade1`
-    FOREIGN KEY (`FCidade_idCidade`)
-    REFERENCES `EmpresaX`.`Cidade` (`idCidade`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Funcionario_Endereco1`
-    FOREIGN KEY (`FEndereco_idEndereco`)
-    REFERENCES `EmpresaX`.`Endereco` (`idEndereco`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `Status` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`idFuncionario`))
 ENGINE = InnoDB;
 
 
