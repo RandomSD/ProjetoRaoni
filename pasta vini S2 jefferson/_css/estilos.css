@@ -27,12 +27,6 @@
     color: #f4511e;
   } 
 
-footer.bg
-{
-  background-color: #F2F2F2;
-  text-align: center; 
- 
-}
 
 #novidades
 {
@@ -62,5 +56,4 @@ footer.bg
 .rodape {
       background-color: #f6f6f6;
       border-top:1px;
-      border-color: #696969;
 }
