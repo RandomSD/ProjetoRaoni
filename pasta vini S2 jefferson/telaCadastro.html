@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tela Cadastro</title>
+	<meta charset="utf-8">
+	<link href="" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+	.navbar {
+      margin-bottom: 0;
+      background-color: #f4511e;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #f4511e !important;
+      background-color: #fff !important;
+  }
+  #btn{
+  	background-color: #f4511e;
+  	border: none;
+  }
+  #btn:hover{
+  	border: 1px solid #f4511e;
+    background-color: #fff !important;
+    color: #f4511e;
+  } 
+  h3 {
+      font-size: 24px;
+      color: #303030;
+      font-weight: 300;
+      margin-bottom: 30px;
+  }
+
+</style>
+<br>
+<br>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <a class="navbar-brand" href="index.html">Logo</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#about">INICIO</a></li>
+	        <li><a href="#services">OPÇÕES</a></li>
+	        
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
+	<div id="main" class="container-fluid">
+  
+  		
+  		
+	  <h3 class="page-header">Preencha os campos corretamente</h3>
+	  <br>
+	  <form action="index.html">
+	  	<div class="row">
+	  	  <div class="form-group col-md-4">
+	  	  	<label for="nome">Nome</label>
+	  	  	<input type="input" class="form-control" placeholder="Digite o seu nome">
+	  	  </div>
+		  <div class="form-group col-md-4">
+	  	  	<label for="cpf">CPF</label>
+	  	  	<input type="text" class="form-control" placeholder="Digite o CPF">
+	  	  </div>
+		  <div class="form-group col-md-4">
+	  	  	<label for="ident">Identidade</label>
+	  	  	<input type="text" class="form-control" placeholder="Digite a sua identidade">
+	  	  </div>
+		</div>
+
+		<div class="row">
+	  	  <div class="form-group col-md-4">
+	  	  	<label for="email">Email</label>
+	  	  	<input type="email" class="form-control" placeholder="Digite o seu email">
+	  	  </div>
+		  <div class="form-group col-md-4">
+	  	  	<label for="senha">Senha</label>
+	  	  	<input type="password" class="form-control" placeholder="Digite a sua senha">
+	  	  </div>
+		  <div class="form-group col-md-4">
+	  	  	<label for="senha1">Repita sua senha</label>
+	  	  	<input type="password" class="form-control" placeholder="Repita a sua senha">
+	  	  </div>
+		</div>
+		
+		<div class="row">
+	  	  <div class="form-group col-md-12">
+	  	  	<label for="endereco">Endereço</label>
+	  	  	<input type="text" class="form-control" placeholder="Digite o endereço">
+	  	  </div>
+		  
+		 
+		</div>
+
+		<div class="row">
+	  	  <div class="form-group col-md-4">
+	  	  	<label for="lograd">Logradouro</label>
+	  	  	<input type="text" class="form-control" placeholder="Digite o logradouro">
+	  	  </div>
+		  <div class="form-group col-md-4">
+	  	  	<label for="num">Numero</label>
+	  	  	<input type="text" class="form-control" placeholder="Digite o numero">
+	  	  </div>
+	  	  <div class="form-group col-md-4">
+	  	  	<label for="comp">Complemento</label>
+	  	  	<input type="text" class="form-control" placeholder="Digite o complemento">
+	  	  </div>
+	  	  <div class="col-md-2">
+	  	  	<label for="civil">Estado cívil</label>
+		      <select class="form-control"">
+		        <option>Casado</option>
+		        <option>Solteiro</option>
+		        <option>Viúvo</option>
+		        <option>Viado</option>
+		      </select>
+	  	  </div>
+		 
+		</div>
+
+		<hr />
+		
+		<div class="row">
+		  <div class="col-md-12">
+		  	<button type="submit" id="btn" class="btn btn-primary">Cadastrar</button>
+			<a href="index.html" class="btn btn-default">Cancelar</a>
+		  </div>
+		</div>
+
+	  </form>
+</div>
+ 
+
+
+</body>
+
+
+</html>

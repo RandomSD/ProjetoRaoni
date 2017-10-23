@@ -1,0 +1,105 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema EmpresaX
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema EmpresaX
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `EmpresaX` DEFAULT CHARACTER SET utf8 ;
+USE `EmpresaX` ;
+
+-- -----------------------------------------------------
+-- Table `EmpresaX`.`Aluno`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `EmpresaX`.`Aluno` (
+  `idAluno` INT NOT NULL AUTO_INCREMENT,
+  `Nome_Al` VARCHAR(50) NOT NULL,
+  `CPF_Al` BIGINT(13) NOT NULL,
+  `RG_Al` BIGINT(10) NOT NULL,
+  `Nasc_Al` DATE NOT NULL,
+  `Telefone_Al` BIGINT(10) NULL,
+  `Celular_Al` BIGINT(11) NOT NULL,
+  `Email` VARCHAR(50) NOT NULL,
+  `CEP` BIGINT(8) NOT NULL,
+  `Endereco` VARCHAR(50) NOT NULL,
+  `Casa_Al` INT NULL,
+  `Bairro` VARCHAR(50) NOT NULL,
+  `Cidade` VARCHAR(50) NOT NULL,
+  `DataEntrada` DATE NOT NULL,
+  `DiaPag` INT NOT NULL,
+  `Status` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`idAluno`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `EmpresaX`.`Funcionario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `EmpresaX`.`Funcionario` (
+  `idFuncionario` INT NOT NULL AUTO_INCREMENT,
+  `Nome_Fun` VARCHAR(50) NOT NULL,
+  `CPF_Fun` BIGINT(13) NOT NULL,
+  `RG_Fun` BIGINT(10) NOT NULL,
+  `Nasc_Fun` DATE NOT NULL,
+  `Telefone_Fun` BIGINT(10) NULL,
+  `Celular_Fun` BIGINT(11) NOT NULL,
+  `Email` VARCHAR(50) NOT NULL,
+  `CEP` BIGINT(8) NOT NULL,
+  `Endereco` VARCHAR(50) NOT NULL,
+  `Casa_Fun` INT NULL,
+  `Bairro` VARCHAR(50) NOT NULL,
+  `Cidade` VARCHAR(50) NOT NULL,
+  `Cargo` VARCHAR(30) NOT NULL,
+  `Admissao` DATE NOT NULL,
+  `Status` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`idFuncionario`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `EmpresaX`.`Login`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `EmpresaX`.`Login` (
+  `idLogin` INT NOT NULL,
+  `Login` VARCHAR(30) NOT NULL,
+  `Senha` VARCHAR(30) NOT NULL,
+  `PerguntaSeguranca` VARCHAR(50) NOT NULL,
+  `Resposta` VARCHAR(50) NOT NULL,
+  `Funcionario_idFuncionario` INT NOT NULL,
+  PRIMARY KEY (`idLogin`, `Funcionario_idFuncionario`),
+  INDEX `fk_Login_Funcionario1_idx` (`Funcionario_idFuncionario` ASC),
+  CONSTRAINT `fk_Login_Funcionario1`
+    FOREIGN KEY (`Funcionario_idFuncionario`)
+    REFERENCES `EmpresaX`.`Funcionario` (`idFuncionario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `EmpresaX`.`Demissao`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `EmpresaX`.`Demissao` (
+  `idDemissao` INT NOT NULL,
+  `DataDemissao` DATE NOT NULL,
+  `Motivo` VARCHAR(100) NULL,
+  `Funcionario_idFuncionario` INT NOT NULL,
+  PRIMARY KEY (`idDemissao`, `Funcionario_idFuncionario`),
+  INDEX `fk_Demissao_Funcionario1_idx` (`Funcionario_idFuncionario` ASC),
+  CONSTRAINT `fk_Demissao_Funcionario1`
+    FOREIGN KEY (`Funcionario_idFuncionario`)
+    REFERENCES `EmpresaX`.`Funcionario` (`idFuncionario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
