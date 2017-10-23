@@ -158,7 +158,7 @@
     unset($pass);
    } else {
     echo '<script language="javascript">';
-	echo 'alert("Algo deu errado . . .")';
+	echo 'alert("Algo deu errado!!!")';
 	echo '</script>';
    } 
     
