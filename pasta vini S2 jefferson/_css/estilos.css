@@ -1,3 +1,12 @@
+body{
+  background-color: white;
+}
+*
+{
+  margin: 0px;
+  padding: 0px;
+  box-sizing; border-box;
+}
 
 .navbar {
       margin-bottom: 0;
@@ -17,16 +26,6 @@
       color: #f4511e !important;
       background-color: #fff !important;
   }
-  #btn{
-    background-color: #f4511e;
-    border: none;
-  }
-  #btn:hover{
-    border: 1px solid #f4511e;
-    background-color: #fff !important;
-    color: #f4511e;
-  } 
-
 
 #novidades
 {
@@ -41,7 +40,6 @@
 .panel {
       border: 1px solid #f4511e; 
       border-radius:0 !important;
-      transition: box-shadow 0.5s;
 }
 .panel-heading {
       color: #fff !important;
@@ -53,7 +51,7 @@
       border-bottom-left-radius: 0px;
       border-bottom-right-radius: 0px;
 }
-.rodape {
-      background-color: #f6f6f6;
-      border-top:1px;
+.rodape
+{
+  background-color: #f7f7f7;
 }
