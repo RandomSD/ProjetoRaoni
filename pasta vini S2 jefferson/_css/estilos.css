@@ -19,7 +19,7 @@ body{
       border-radius: 0;
       font-family: Montserrat, sans-serif;
   }
-  .navbar li a, .navbar .navbar-brand {
+  .navbar li a, .navbar .navbar-brand, .navbar .navbar-collapse li{
       color: #fff !important;
   }
   .navbar-nav li a:hover, .navbar-nav li.active a {
