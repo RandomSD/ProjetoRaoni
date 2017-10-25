@@ -32,8 +32,6 @@
   $pass = htmlspecialchars($pass);
 
   $pass2 = trim($_POST['pass2']);
-  $pass2 = strip_tags($pass2);
-  $pass2 = htmlspecialchars($pass2);
 
   $nascimento = trim($_POST['nascimento']);
   $nascimento = strip_tags($nascimento);
@@ -79,11 +77,8 @@
   $resposta = strip_tags($resposta);
   $resposta = htmlspecialchars($resposta);
 
-  $empresa = trim($_POST['empresa']);
-  $empresa = strip_tags($empresa);
-  $empresa = htmlspecialchars($empresa);
-
   //condições
+  
   if (empty($name)) {
    $error = true;
    $nameError = "Por favor digite seu Nome .";
@@ -101,7 +96,7 @@
    $emailError = "Por favor informe um E-Mail válido.";
   } else {
   
-   $query = "SELECT userEmail FROM users WHERE userEmail='$email'";
+   $query = "SELECT Email FROM users WHERE Email='$email'";
    $result = mysql_query($query);
    $count = mysql_num_rows($result);
    if($count!=0){
@@ -109,13 +104,6 @@
     $emailError = "E-Mail já cadastrado.";
    }
 } 
-   $query = "SELECT Empresa FROM users WHERE Empresa='$empresa'";
-   $result = mysql_query($query);
-   $count = mysql_num_rows($result);
-   if($count!=0){
-    $error = true;
-    $empresaError = "Empresa já cadastrada.";
-   }
   
   if (empty($pass)){
    $error = true;
@@ -133,7 +121,7 @@
 
   if(strlen($cpf) < 11) {
    $error = true;
-   $passError = "Por favor digite seu CPF.";
+   $cpfError = "Por favor digite seu CPF.";
   }
 
   if(strlen($rg) < 7) {
@@ -141,12 +129,49 @@
    $rgError = "Por favor digite seu RG.";
   }
 
-  $password = hash('sha256', $pass);
+    if(strlen($cep) < 8) {
+   $rg = true;
+   $cepError = "Por favor digite o CEP.";
+  }
+
+    if (empty($cidade)) {
+   $error = true;
+   $cidadeError = "Por favor digite seu Nome.";
+  }
+
+    if (empty($bairro)) {
+   $error = true;
+   $bairroError = "Por favor digite o Bairro.";
+  }
+
+    if (empty($endereco)) {
+   $error = true;
+   $enderecoError = "Por favor digite o Endereço.";
+  }
+
+    if(strlen($celular) < 8) {
+   $error = true;
+   $celularError = "Por favor digite o celular.";
+  }
+
+   if(strlen($resposta) < 3) {
+   $error = true;
+   $respostaError = "Por favor digite a resposta.";
+  }
+
+
+    if(strlen($pergunta) < 3) {
+   $error = true;
+   $perguntaError = "Por favor digite a pergunta.";
+  }
+
+
+  $pass = hash('sha256', $pass);
   
   
   if( !$error ) {
    
-   $query = "INSERT INTO users(userName,userEmail,userPass,Empresa) VALUES('$name','$email','$password','$empresa')";
+   $query = "INSERT INTO users (Nome,Pass,Email,CPF,RG,Nascimento,Telefone,Celular,CEP,Endereco,Numero,Estado,Cidade,Bairro,PerguntaSeguranca,RespostaSeguranca,Empresa,Cargo) VALUES('$name','$pass','$email','$cpf','$rg','$nascimento','$telefone','$celular','$cep','$endereco','$numero','$estado','$cidade','$bairro','$pergunta','$resposta','Empresax','Atendente')";
    $res = mysql_query($query);
     
    if ($res) {
@@ -158,7 +183,7 @@
     unset($pass);
    } else {
     echo '<script language="javascript">';
-	echo 'alert("Algo deu errado!!!")';
+	echo 'alert("Algo deu errado . . .")';
 	echo '</script>';
    } 
     
@@ -177,6 +202,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
 	<script>
 	function sucesso() 
 	{
@@ -190,6 +216,7 @@
     alert("falha!");</script>
 	}
 	</script>
+
 
 </head>
 <style>
@@ -268,12 +295,12 @@
 	  	  </div>	  	  
 		  <div class="form-group col-md-4">
 	  	  	<label for="cpf">CPF</label>
-	  	  	<input type="text" name="cpf" maxlength="11" class="form-control" placeholder="Digite o CPF">
+	  	  	<input type="number" name="cpf" maxlength="11" class="form-control" placeholder="Digite o CPF">
 	  	  	<span class="text-danger"><?php echo $cpfError; ?></span>
 	  	  </div>
 		  <div class="form-group col-md-4">
 	  	  	<label for="ident">Identidade</label>
-	  	  	<input type="text" name="rg" maxlength="7"  class="form-control" placeholder="Digite seu RG">
+	  	  	<input type="number" name="rg"  maxlength="7"  class="form-control" placeholder="Digite seu RG">
 	  	  	<span class="text-danger"><?php echo $rgError; ?></span>
 	  	  </div>	  	  
 		</div>
@@ -299,7 +326,7 @@
 		<div class="row">
 	  	  <div class="form-group col-md-4">
 	  	  	<label for="endereco">Nascimento</label>
-	  	  	<input type="date" name="nascimento" class="form-control" placeholder="Nascimento">
+	  	  	<input type="date" name="nascimento" class="form-control"  maxlength="10">
 	  	  	<span class="text-danger"><?php echo $nascimentoError; ?></span>
 	  	  </div>
 	  	  <div class="form-group col-md-4">
@@ -317,7 +344,7 @@
 		<div class="row">
 	  	  <div class="form-group col-md-4">
 	  	  	<label for="endereco">CEP</label>
-	  	  	<input type="number" name="cep" class="form-control" placeholder="Digite o CEP">
+	  	  	<input type="number" name="cep" maxlength="8" class="form-control" placeholder="Digite o CEP">
 	  	  	<span class="text-danger"><?php echo $cepError; ?></span>
 	  	  </div>
 	  	  <div class="form-group col-md-4">
@@ -327,43 +354,43 @@
 	  	  </div>
 	  	  <div class="form-group col-md-4">
 	  	  	<label for="endereco">Número (Opcional)</label>
-	  	  	<input type="text" name="numero" class="form-control" placeholder="Nº casa">
+	  	  	<input type="number" name="numero" class="form-control" placeholder="Nº casa">
 	  	  	<span class="text-danger"><?php echo $numeroError; ?></span>
 	  	  </div>	 
 		</div>
 
 		<div class="row">
 	  	  <div class="col-md-4">
-	  	  	<label for="civil">Estado</label>	  	  	
-		      <select class="form-control" name="estado">
-		        <option>Acre</option>
-		        <option>Alagoas</option>
-		        <option>Amapá</option>
-		        <option>Amazonas</option>
-		        <option>Bahia</option>
-		        <option>Ceará</option>
-		        <option>Distrito Federal</option>
-		        <option>Espírito Santo</option>
-		        <option>Goiás</option>
-		        <option>Maranhão</option>
-		        <option>Mato Grosso</option>
-		        <option>Mato Grosso do Sul</option>
-		        <option>Minas Gerais</option>
-		        <option>Pará</option>
-		        <option>Paraíba</option>
-		        <option>Paraná</option>
-		        <option>Pernambuco</option>
-		        <option>Piauí</option>
-		        <option>Rio de Janeiro</option>
-		        <option>Rio Grande do Norte</option>
-		        <option>Rio Grande do Sul</option>
-		        <option>Rondônia</option>
-		        <option>Roraima</option>
-		        <option>Santa Catarina</option>
-		        <option>São Paulo</option>
-		        <option>Sergipe</option>
-		        <option>Tocantins</option>
-		      </select>
+	  	  	<label for="civil">Estado</label>  		  	  	
+	  	  	<select class="form-control" name="estado">
+		        <option value="Acre">Acre</option>
+		        <option value="Alagoas">Alagoas</option>
+		        <option value="Amapá">Amapá</option>
+		        <option value="Amazonas">Amazonas</option>
+		        <option value="Bahia" >Bahia</option>
+		        <option value="Ceará" >Ceará</option>
+		        <option value="Distrito Federal" >Distrito Federal</option>
+		        <option value="Espírito Santo" >Espírito Santo</option>
+		        <option value="Goiás" >Goiás</option>
+		        <option value="Maranhão" >Maranhão</option>
+		        <option value="Mato Grosso" >Mato Grosso</option>
+		        <option value="Mato Grosso do Sul" >Mato Grosso do Sul</option>
+		        <option value="Minas Gerais" >Minas Gerais</option>
+		        <option value="Pará" >Pará</option>
+		        <option value="Paraíba" >Paraíba</option>
+		        <option value="Paraná" >Paraná</option>
+		        <option value="Pernambuco" >Pernambuco</option>
+		        <option value="Piauí" >Piauí</option>
+		        <option value="Rio de Janeiro" >Rio de Janeiro</option>
+		        <option value="Rio Grande do Norte" >Rio Grande do Norte</option>
+		        <option value="Rio Grande do Sul" >Rio Grande do Sul</option>
+		        <option value="Rondônia" >Rondônia</option>
+		        <option value="Roraima" >Roraima</option>
+		        <option value="Santa Catarina" >Santa Catarina</option>
+		        <option value="São Paulo" >São Paulo</option>
+		        <option value="Sergipe" >Sergipe</option>
+		        <option value="Tocantins" >Tocantins</option>
+		      </select>		      
 	  	  </div>
 	  	  <div class="form-group col-md-4">
 	  	  	<label for="endereco">Cidade</label>
@@ -390,14 +417,6 @@
 	  	  	<label for="lograd">Resposta</label>
 	  	  	<input type="text" name="resposta" class="form-control" placeholder="Digite a Resposta">
 	  	  	<span class="text-danger"><?php echo $respostaError; ?></span>
-	  	  </div>
-		</div>
-
-		<div class="row">
-	  	  <div class="form-group col-md-12">
-	  	  	<label for="lograd">Nome da Empresa</label>
-	  	  	<input type="text" name="empresa" class="form-control" placeholder="Digite o nome da Empresa">
-	  	  	<span class="text-danger"><?php echo $empresaError; ?></span>
 	  	  </div>
 		</div>
 
