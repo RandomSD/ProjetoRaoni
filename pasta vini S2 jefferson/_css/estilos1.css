@@ -1,135 +1,38 @@
-@charset "UTF-8";
-
+body{
+  background-color: white;
+}
 *
 {
-	margin: 0px;
-	padding: 0px;
-	box-sizing; border-box;
+  margin: 0px;
+  padding: 0px;
+  box-sizing; border-box;
 }
 
-body
-{
-	background: #ececec;
-	font-family: Roboto;
-}
+.navbar {
+      margin-bottom: 0;
+      background-color: #f4511e;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand, .navbar .navbar-collapse li{
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #f4511e !important;
+      background-color: #fff !important;
+  }
 
-#menu
-{
-	width: 100%;
-	height: 100px;
-	background: #333;
-	color: white;
-}
-
-#menu li
-{
-	display: block;
-}
-
-#menu a
-{
-	float: right;
-	text-decoration: none;
-	color: #0af;
-	text-transform: uppercase;
-	line-height: 100px;
-	height: 100px;
-	padding: 0px 10px;
-}
-
-#menu a:hover
-{
-	background: #444;
-}
-
-#menu i.left
-{
-	float: left;
-	height: 100px;
-	line-height: 100px;
-	margin-right: 5px;
-}
-
-#rodape
-{
-		width: 100%; 
-		height: 50%; 
-		border-top: 1px solid #5d5d5d;
-		clear: both;
-}
 .rodape
 {
-		text-align: center; 
-		font-size: 12px; 
-		color: black;
+  background-color: #F2F2F2;
 }
 
-#corpo
-{	
-	
-	height: 900px;
-	line-height: 900px;
-	font-size: 70px;
-}
-
-
-#menu li.esquerda
-{	
-	font-size: 30px;
-	float: left;
-	text-align: left;
-}
-
-#menu img
+#textb
 {
-	max-width: 200px;
- 	max-height: 200px;
- 	padding: 14px 0px;
-}
-
-.alinhar
-{
-	height: 40px;
-	line-height: 40px;
-}
-
-#divBusca{
-  background-color:#E0EEEE;
-  border:solid 2px #333;
-  border-radius:10px;
-  width:300px;
-  height:32px;
-}
-
-#txtBusca{
-  float:left;
-  background-color:transparent;
-  padding-left:5px; 
-  font-size:18px;
-  border:none;
-  height:32px;
-  width:191px;
-}
-
-#btnBusca{
-  border:none;
-  float:right;
-  height:32px;
-  border-radius:0 7px 7px 0;
-  width:70px;
-  font-weight:bold;
-  background:#0af;
-}
-
-#divBusca img
-{
-  float:left;
-  max-width: 32px;
-  max-height: 32px;
-}
-
-#corrigir
-{
-	padding: 30px 10px;
-	float: right;
+  padding-right: 200px;
 }
