@@ -41,22 +41,55 @@
     <div class="col-md-6">
         <div class="input-group">
             <input id="textb" name="data[search]" class="form-control" id="search" type="text" placeholder="CPF/NOME">
-            <br>
-            <span class="input-group-btn h2">
-                <button id="button" class="btn btn-primary" type="submit">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-            </span>
-        </div>
-    </div>
-</div> <!-- /#top -->
+               <br>
+                <span class="input-group-btn h2">
+                   <button id="button" class="btn btn-primary" type="submit">
+                       <span class="glyphicon glyphicon-search"></span>
+                   </button>
+               </span>
+            </div>
+        </div>
+    </div> <!-- /#top -->
 
       <hr />
 
-      <div id ="buttons">
+      <div id ="buttons" class="col-md-6" >
         <button type="button" class="btn btn-primary">Cadastrar</button>
         <button type="button" class="btn btn-warning">Alterar</button>
-        <button type="button" class="btn btn-danger">Deletar</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Deletar</button>
+
+        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          
+          <br>
+          <br>
+
+      <!-- Modal content-->
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <h4 class="modal-title">Digite a matricula do aluno a ser excluido.</h4>
+           </div>
+           <div class="modal-body">
+                
+              <div id="grupo2" class="input-group">
+                  <input name="data[search]" class="form-control" id="search" type="text" placeholder="Matricula">
+                   <br>
+                    <span class="input-group-btn h2">
+                      <button id="button" class="btn btn-danger" type="submit">
+                         <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                    </span>
+              </div>
+                
+            </div>
+           <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
       </div>
 
       <div di="list" class="row">
