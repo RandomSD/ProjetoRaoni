@@ -55,3 +55,15 @@ body{
 {
   background-color: #F2F2F2;
 }
+#about{
+  color: #fff;
+  margin-top: 0px;
+  padding: 100px;
+  border-bottom: 5px solid #f3f3f3;
+  background-color: #FF6347;
+}
+.logo {
+      color: #f4511e;
+      font-size: 200px;
+      text-align: right;
+  }
