@@ -1,6 +1,6 @@
  <?php  
- $connect = mysqli_connect("localhost", "root", "", "banco1");  
- $query ="SELECT * FROM testando1 ORDER BY Id DESC";  
+ $connect = mysqli_connect("localhost", "root", "", "empresax");  
+ $query ="SELECT * FROM aluno ORDER BY idAluno DESC";  
  $result = mysqli_query($connect, $query);
  ?>  
  <!DOCTYPE html>  
@@ -22,11 +22,23 @@
                      <table id="employee_data" class="table table-striped table-bordered">  
                           <thead>  
                                <tr>  
-                                    <td>Nome</td>  
-                                    <td>Email</td>  
-                                    <td>CPF</td>  
-                                    <td>RG</td>  
-                                    <td>Nascimento</td>  
+                                    <td>ID</td>
+                                    <td>Nome</td>
+                                    <td>CPF</td>
+                                    <td>RG</td>
+                                    <td>Data de nascimento</td>
+                                    <td>Telefone</td>
+                                    <td>Celular</td>
+                                    <td>E-mail</td>  
+                                    <td>Cep</td>
+                                    <td>Endereço</td>     
+                                    <td>Número</td>               
+                                    <td>Bairro</td>
+                                    <td>Cidade</td>
+                                    <td>Estado</td>
+                                    <td>Entrada</td>
+                                    <td>Dia de Pagamento</td>
+                                    <td>Status</td>  
                                </tr>  
                           </thead>  
                           <?php  
@@ -35,11 +47,23 @@
                             //NOME DOS CAMPOS DA TABELA
                                echo '  
                                <tr>  
-                                    <td>'.$row["Nome"].'</td>  
-                                    <td>'.$row["Email"].'</td>  
-                                    <td>'.$row["CPF"].'</td>  
-                                    <td>'.$row["RG"].'</td>  
-                                    <td>'.$row["Nascimento"].'</td>  
+                                    <td>'.$row["idAluno"].'</td>  
+                                    <td>'.$row["Nome_Al"].'</td>  
+                                    <td>'.$row["CPF_Al"].'</td>  
+                                    <td>'.$row["RG_Al"].'</td>  
+                                    <td>'.$row["Nasc_Al"].'</td>  
+                                    <td>'.$row["Telefone_Al"].'</td>
+                                    <td>'.$row["Celular_Al"].'</td>    
+                                    <td>'.$row["Email_Al_Al/"].'</td>  
+                                    <td>'.$row["CEP_Al/"].'</td> 
+                                    <td>'.$row["Endereco_Al"].'</td>
+                                    <td>'.$row["Casa_Al"].'</td>
+                                    <td>'.$row["Bairro_Al_Al"].'</td>      
+                                    <td>'.$row["Cidade_Al"].'</td>
+                                    <td>'.$row["Estado_Al"].'</td>
+                                    <td>'.$row["Admissao_Al"].'</td>
+                                    <td>'.$row["DiaPag"].'</td>
+                                    <td>'.$row["Status_Al"].'</td>          
                                </tr>  
                                ';  
                           }  
