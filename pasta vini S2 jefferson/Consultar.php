@@ -54,11 +54,11 @@
                                     <td>'.$row["Nasc_Al"].'</td>  
                                     <td>'.$row["Telefone_Al"].'</td>
                                     <td>'.$row["Celular_Al"].'</td>    
-                                    <td>'.$row["Email_Al_Al/"].'</td>  
-                                    <td>'.$row["CEP_Al/"].'</td> 
+                                    <td>'.$row["Email_Al"].'</td>  
+                                    <td>'.$row["CEP_Al"].'</td> 
                                     <td>'.$row["Endereco_Al"].'</td>
                                     <td>'.$row["Casa_Al"].'</td>
-                                    <td>'.$row["Bairro_Al_Al"].'</td>      
+                                    <td>'.$row["Bairro_Al"].'</td>      
                                     <td>'.$row["Cidade_Al"].'</td>
                                     <td>'.$row["Estado_Al"].'</td>
                                     <td>'.$row["Admissao_Al"].'</td>
