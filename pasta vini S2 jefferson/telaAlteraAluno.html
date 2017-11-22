@@ -116,15 +116,18 @@
 		  	  	
 		  	  </div>
 			  <div class="form-group col-md-4">
-		  	  	<label for="senha">Senha</label>
-		  	  	<input type="password" name="pass" class="form-control" placeholder="Digite a sua senha">
+		  	  	<label for="entrada">Data de Entrada</label>
+		  	  	<input type="date" name="pass" class="form-control" placeholder="Informe a data">
 		  	  	
 		  	  </div>
 			  <div class="form-group col-md-4">
-		  	  	<label for="senha1">Repita sua senha</label>
-		  	  	<input type="password" name="pass2" class="form-control" placeholder="Repita a sua senha">
-		  	  	
-		  	  </div>
+		  	  	<label for="status">Status</label>
+		  	  	<select class="form-control" name="Status">
+			        <option value="Ativo">Ativo</option>
+			        <option value="Inativo">Inativo</option>
+			        <option value="Inadiplente">Inadiplente</option>
+			  	</select> 	  	
+		   	  </div>
 			</div>
 			
 			<div class="row">
@@ -209,10 +212,14 @@
 			</div>
 
 			<div class="row">
-		  	  <div class="form-group col-md-12">
-		  	  	<label for="endereco">Pergunta de segurança</label>
-		  	  	<input type="text" name="pergunta" class="form-control" placeholder="Digite a Pergunta">
-		  	  	
+		  	  <div class="fcol-md-4">
+		  	  	<label for="lograd">Pergunta de segurança</label>
+		  	  	<select class="form-control" name="pergunta">
+			        <option value="Nome do primeiro cachorro?">Nome do primeiro cachorro?</option>
+			        <option value="Nome do primeiro namorado(a)">Nome do primeiro namorado(a)?</option>
+			        <option value="Profissão dos sonhos?">Profissão dos sonhos?</option>
+			        <option value="Um amor?">Um amor?</option>
+		  	  	</select>	
 		  	  </div>
 			</div>
 
