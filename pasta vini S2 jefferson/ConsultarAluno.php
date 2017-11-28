@@ -11,9 +11,30 @@
            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
            <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> 
            <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-           <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+           <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+           <link rel = "stylesheet" href="_css/estilos1.css">  
       </head>  
-      <body>  
+      <body>
+      <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="index.html">Logo</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">        
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html.html">HOME</a></li>
+          <li><a href="gerenciamento.html">VOLTAR</a></li>
+          <li><a href="index.html">SAIR</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>   
            <br /><br />  
            <div class="container">  
                 <h3 align="center">Consulta de alunos</h3>  
@@ -24,6 +45,7 @@
                                <tr>  
                                     <td>ID</td>
                                     <td>Nome</td>
+                                    <td>Sexo</td>
                                     <td>CPF</td>
                                     <td>RG</td>
                                     <td>Data de nascimento</td>
@@ -47,7 +69,8 @@
                                echo '  
                                <tr>  
                                     <td>'.$row["idAluno"].'</td>  
-                                    <td>'.$row["Nome_Al"].'</td>  
+                                    <td>'.$row["Nome_Al"].'</td>
+                                    <td>'.$row["Sexo_Al"].'</td>   
                                     <td>'.$row["CPF_Al"].'</td>  
                                     <td>'.$row["RG_Al"].'</td>  
                                     <td>'.$row["Nasc_Al"].'</td>  
