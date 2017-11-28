@@ -36,9 +36,8 @@
                                     <td>Bairro</td>
                                     <td>Cidade</td>
                                     <td>Estado</td>
-                                    <td>Entrada</td>
-                                    <td>Dia de Pagamento</td>
-                                    <td>Status</td>  
+                                    <td>Status</td>
+                                    <td>Entrada</td>                                    
                                </tr>  
                           </thead>  
                           <?php  
@@ -60,10 +59,9 @@
                                     <td>'.$row["Casa_Al"].'</td>
                                     <td>'.$row["Bairro_Al"].'</td>      
                                     <td>'.$row["Cidade_Al"].'</td>
-                                    <td>'.$row["Estado_Al"].'</td>
-                                    <td>'.$row["Admissao_Al"].'</td>
-                                    <td>'.$row["DiaPag"].'</td>
-                                    <td>'.$row["Status_Al"].'</td>          
+                                    <td>'.$row["Estado_Al"].'</td>                                    
+                                    <td>'.$row["Status_Al"].'</td>
+                                    <td>'.$row["DataEntrada"].'</td>           
                                </tr>  
                                ';  
                           }  
