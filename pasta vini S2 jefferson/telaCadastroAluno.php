@@ -71,11 +71,15 @@
   $status = strip_tags($status);
   $status = htmlspecialchars($status);
 
+  $sexo = trim($_POST['sexo']);
+  $sexo = strip_tags($sexo);
+  $sexo = htmlspecialchars($sexo);
+
   //condições
 
   if( !$error ) {
    
-   $query = "INSERT INTO aluno (Nome_Al,CPF_Al,RG_Al,Nasc_Al,Telefone_Al,Celular_Al,Email_Al,CEP_Al,Endereco_Al,Casa_Al,Bairro_Al,Cidade_Al,Estado_Al,DataEntrada,Status_Al) VALUES('$name','$cpf','$rg','$nascimento','$telefone','$celular','$email','$cep','$endereco','$numero','$bairro','$cidade','$estado','$entrada','$status')";
+   $query = "INSERT INTO aluno (Nome_Al,CPF_Al,RG_Al,Nasc_Al,Telefone_Al,Celular_Al,Email_Al,CEP_Al,Endereco_Al,Casa_Al,Bairro_Al,Cidade_Al,Estado_Al,DataEntrada,Status_Al,Sexo_Al) VALUES('$name','$cpf','$rg','$nascimento','$telefone','$celular','$email','$cep','$endereco','$numero','$bairro','$cidade','$estado','$entrada','$status','$sexo')";
    $res = mysql_query($query);
     
    if ($res) {
@@ -215,11 +219,19 @@
 	  	  	<label for="entrada">Data Entrada</label>
 	  	  	<input type="date" name="entrada" class="form-control">	  	  
 	  	  </div>
-		  <div class="form-group col-md-4">
+		  <div class="form-group col-md-2">
 	  	  	<label for="status">Status</label>
 	  	  	<select class="form-control" name="status">
 		        <option value="Ativo">Ativo</option>
 		        <option value="Inativo">Inativo</option>
+		    </select>	  	  	
+	  	  </div>
+	  	  <div class="form-group col-md-2">
+	  	  	<label for="sexo">Sexo</label>
+	  	  	<select class="form-control" name="sexo">
+		        <option value="M">Masculino</option>
+		        <option value="F">Feminino</option>
+		        <option value="O">Outro</option>
 		    </select>	  	  	
 	  	  </div>
 		</div>
@@ -313,14 +325,9 @@
 			<a href="consultar.php" class="btn btn-default">Cancelar</a>
 		  </div>
 		</div>
-
 	  </form>
-</div>
- 
-
-
+	</div>
 </body>
-
 
 </html>
 <?php ob_end_flush(); ?>
