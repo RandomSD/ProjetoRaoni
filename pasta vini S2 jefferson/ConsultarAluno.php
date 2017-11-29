@@ -47,14 +47,6 @@
         <a href="telaAlteraAluno.html"><button type="button" class="btn btn-warning">Alterar</button></a>
         <button type="button" class="btn btn-danger">Deletar</button>
       </div>
-           <div class="modal fade" id="myModal" role="dialog">
-             <div class="modal-dialog">
-          
-              <br>
-              <br>
-      
-             </div>
-          </div>
  </div>
                 <br>
 
