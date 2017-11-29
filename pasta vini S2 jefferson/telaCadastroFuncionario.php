@@ -63,9 +63,9 @@
   $bairro = strip_tags($bairro);
   $bairro = htmlspecialchars($bairro);
 
-  $entrada = trim($_POST['entrada']);
-  $entrada = strip_tags($entrada);
-  $entrada = htmlspecialchars($entrada);
+  $admissao = trim($_POST['admissao']);
+  $admissao = strip_tags($admissao);
+  $admissao = htmlspecialchars($admissao);
 
   $status = trim($_POST['status']);
   $status = strip_tags($status);
@@ -75,16 +75,25 @@
   $sexo = strip_tags($sexo);
   $sexo = htmlspecialchars($sexo);
 
+  $senha = trim($_POST['senha']);
+  $senha = strip_tags($senha);
+  $senha = htmlspecialchars($senha);
+
+  $login = trim($_POST['login']);
+  $login = strip_tags($login);
+  $login = htmlspecialchars($login);
+
   //condições
 
   if( !$error ) {
    
-   $query = "INSERT INTO aluno (Nome_Al,CPF_Al,RG_Al,Nasc_Al,Telefone_Al,Celular_Al,Email_Al,CEP_Al,Endereco_Al,Casa_Al,Bairro_Al,Cidade_Al,Estado_Al,DataEntrada,Status_Al,Sexo_Al) VALUES('$name','$cpf','$rg','$nascimento','$telefone','$celular','$email','$cep','$endereco','$numero','$bairro','$cidade','$estado','$entrada','$status','$sexo')";
+   $query = "INSERT INTO funcionario (Nome_Fun,CPF_Fun,RG_Fun,Nasc_Fun,Telefone_Fun,Celular_Fun,Email,CEP_Fun,Endereco_Fun,Casa_Fun,Bairro_Fun,Cidade_Fun,Estado_Fun,Cargo,Admissao,Status_Fun,Login,Senha) VALUES('$name','$cpf','$rg','$nascimento','$telefone','$celular','$email','$cep','$endereco','$numero','$bairro','$cidade','$estado','Atendente','$admissao','$status','$login','$senha')";
+  
    $res = mysql_query($query);
     
    if ($res) {
     echo '<script language="javascript">';
-	echo 'alert("Aluno cadastrado com sucesso!")';
+	echo 'alert("Funcionario cadastrado com sucesso!")';
 	echo '</script>';
     unset($name);
    } else {
@@ -191,6 +200,18 @@
 	  <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
 	  	<div class="alert-alert-<?php echo ($errTyp=="success") ? "success" : $errTyp; ?>">
     </div>
+    	<div class="row">
+    		<div class="form-group col-md-4">
+	  	  	<label for="nome">Login</label>
+	  	  	<input type="text" name="login" class="form-control" placeholder="Login">
+	  	  	<span class="text-danger"><?php echo $nameError; ?></span>
+	  	  </div>
+	  	  <div class="form-group col-md-4">
+	  	  	<label for="nome">Senha</label>
+	  	  	<input type="password" name="senha" class="form-control" >
+	  	  	<span class="text-danger"><?php echo $nameError; ?></span>
+	  	  </div>
+	  	</div>
 	  	<div class="row">
 	  	  <div class="form-group col-md-4">
 	  	  	<label for="nome">Nome</label>
@@ -216,24 +237,16 @@
 	  	  	<span class="text-danger"><?php echo $emailError; ?></span>
 	  	  </div>
 		  <div class="form-group col-md-4">
-	  	  	<label for="entrada">Data Entrada</label>
-	  	  	<input type="date" name="entrada" class="form-control">	  	  
+	  	  	<label for="admissao">Admissao</label>
+	  	  	<input type="date" name="admissao" class="form-control">	  	  
 	  	  </div>
-		  <div class="form-group col-md-2">
+		  <div class="form-group col-md-4">
 	  	  	<label for="status">Status</label>
 	  	  	<select class="form-control" name="status">
 		        <option value="Ativo">Ativo</option>
 		        <option value="Inativo">Inativo</option>
 		    </select>	  	  	
-	  	  </div>
-	  	  <div class="form-group col-md-2">
-	  	  	<label for="sexo">Sexo</label>
-	  	  	<select class="form-control" name="sexo">
-		        <option value="MASCULINO">Masculino</option>
-		        <option value="FEMININO">Feminino</option>
-		        <option value="OUTRO">Outro</option>
-		    </select>	  	  	
-	  	  </div>
+	  	  </div>	  	  
 		</div>
 		
 		<div class="row">
@@ -322,7 +335,7 @@
 		<div class="row">
 		  <div class="col-md-12">
 		  	<button type="submit" id="btn" name="btn-signup" class="btn btn-primary">Cadastrar</button>
-			<a href="telaconsultaaluno.php" class="btn btn-default">Cancelar</a>
+			<a href="telaConsultaFuncionario.php" class="btn btn-default">Cancelar</a>
 		  </div>
 		</div>
 	  </form>

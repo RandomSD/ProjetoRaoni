@@ -1,21 +1,28 @@
- <?php  
+<?php  
  $connect = mysqli_connect("localhost", "root", "", "empresax");  
- $query ="SELECT * FROM aluno ORDER BY idAluno DESC";  
+ $query ="SELECT *, DATE_FORMAT(Nasc_Al,'%d/%m/%Y') AS niceDate , DATE_FORMAT(DataEntrada,'%d/%m/%Y') AS niceDate2 
+FROM aluno;";  
  $result = mysqli_query($connect, $query);
- ?>  
- <!DOCTYPE html>  
- <html>  
-      <head>  
-           <title>Consulta de alunos</title>  
-           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-           <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> 
-           <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-           <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-           <link rel = "stylesheet" href="_css/estilos1.css">  
-      </head>  
-      <body>
-      <nav class="navbar navbar-default navbar-fixed-top">
+
+  ?> 
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Consultar lista alunos</title>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> 
+  <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+  <link rel = "stylesheet" href="_css/estilos1.css">  
+</head>
+
+<br>
+<br>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -26,38 +33,33 @@
         <a class="navbar-brand" href="index.html">Logo</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">        
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="index.html.html">HOME</a></li>
-          <li><a href="gerenciamento.html">VOLTAR</a></li>
-          <li><a href="index.html">SAIR</a></li>
+        <ul class="nav navbar-nav navbar-right">          
+          <li><a href="gerenciamento.php">VOLTAR</a></li>
+          <li><a href="index.php">SAIR</a></li>
           
         </ul>
       </div>
     </div>
-  </nav>   
-           <br /><br />  
+  </nav>
 
-           <div class="container">  
+  <div id="main" class="container-fluid">
+
+
+<div class="container">  
                 <h3 align="center">Consulta de alunos</h3>  
-                <br />  
-
-  <div class="row">
-      <div id ="buttons" class="col-md-5" >
-        <a href="telaCadastroAluno.html"> <button type="button" class="btn btn-primary">Cadastrar</button></a>
-        <a href="telaAlteraAluno.html"><button type="button" class="btn btn-warning">Alterar</button></a>
-        <button type="button" class="btn btn-danger">Deletar</button>
-      </div>
-           <div class="modal fade" id="myModal" role="dialog">
-             <div class="modal-dialog">
-          
-              <br>
-              <br>
+                <br />
       
-             </div>
-          </div>
- </div>
-                <br>
+    <div class="row">
+      <div id ="buttons" class="col-md-5" >
+        <a href="telaCadastroAluno.php"> <button type="button" class="btn btn-primary">Cadastrar</button></a>
+        <a href="telaAlteraAluno.php"><button type="button" class="btn btn-warning">Alterar</button></a>
+        <a href="telaDeletaAluno.php"><button type="button" class="btn btn-danger" >Deletar</button></a>
+      </div>
 
+          <br>
+          <br>          
+            <div class="row">
+              <div class="col-md-12">
                 <div class="table-responsive">  
                      <table id="employee_data" class="table table-striped table-bordered">  
                           <thead>  
@@ -92,7 +94,7 @@
                                     <td>'.$row["Sexo_Al"].'</td>   
                                     <td>'.$row["CPF_Al"].'</td>  
                                     <td>'.$row["RG_Al"].'</td>  
-                                    <td>'.$row["Nasc_Al"].'</td>  
+                                    <td>'.$row["niceDate"].'</td>  
                                     <td>'.$row["Telefone_Al"].'</td>
                                     <td>'.$row["Celular_Al"].'</td>    
                                     <td>'.$row["Email_Al"].'</td>  
@@ -103,17 +105,40 @@
                                     <td>'.$row["Cidade_Al"].'</td>
                                     <td>'.$row["Estado_Al"].'</td>                                    
                                     <td>'.$row["Status_Al"].'</td>
-                                    <td>'.$row["DataEntrada"].'</td>           
+                                    <td>'.$row["niceDate2"].'</td>           
                                </tr>  
                                ';  
                           }  
                           ?>  
                      </table>  
-                </div>  
-           </div>  
-      </body>  
- </html>  
- <script>  
+                </div>
+                  
+                </div>
+              </div>
+            </div>     
+
+
+  <footer class="container-fluid">
+    <div class="row">  
+        <div class="col-md-12 text-center rodape">
+        <br><br><br>
+
+        <strong>Qualquer duvida contate-nos</strong>
+        <br>
+        <br>
+
+        <p><span class="glyphicon glyphicon-phone"></span> +55 1515151515</p>
+        <p><span class="glyphicon glyphicon-envelope"></span> meuemail@algumacoisa.com</p>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+
+
+</html>
+<script>  
  $(document).ready(function(){  
       $('#employee_data').DataTable({
         "language" : br

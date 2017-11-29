@@ -24,8 +24,9 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="telaConsultaAluno.html">GERENCIAR ALUNOS</a></li>
-          <li><a href="index.html">SAIR</a></li>
+          <li><a href="telaConsultaFuncionario.php">GERENCIAR FUNCIONÁRIOS</a></li>
+          <li><a href="telaConsultaAluno.php">GERENCIAR ALUNOS</a></li>
+          <li><a href="index.php">SAIR</a></li>
           
         </ul>
       </div>
@@ -35,7 +36,7 @@
   <div class="col-md-6">
     <div id="novidades">
       <div class="panel panel-default">
-        <div class="panel-heading">Novidades Random</div>
+        <div class="panel-heading">Novidades</div>
         <div class="panel-body jeito">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
       </div>
    </div> 

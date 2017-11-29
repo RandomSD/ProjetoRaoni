@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AREA GERENTE</title>
+  <title>AREA ATENDENTE</title>
   <meta charset="utf-8">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -23,10 +23,9 @@
         <a class="navbar-brand" href="index.html">Logo</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="telaConsultarFunc.html">GERENCIAR FUNCIONARIOS</a></li>
-          <li><a href="telaConsultaAluno.html">GERENCIAR ALUNOS</a></li>
-          <li><a href="index.html">SAIR</a></li>
+        <ul class="nav navbar-nav navbar-right">          
+          <li><a href="telaConsultaAluno.php">GERENCIAR ALUNOS</a></li>
+          <li><a href="index.php">SAIR</a></li>
           
         </ul>
       </div>
@@ -36,7 +35,7 @@
   <div class="col-md-6">
     <div id="novidades">
       <div class="panel panel-default">
-        <div class="panel-heading">Novidades Random</div>
+        <div class="panel-heading">Novidades</div>
         <div class="panel-body jeito">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
       </div>
    </div> 
@@ -44,7 +43,7 @@
   <div class="col-md-6">
     <div id="novidades">
       <div class="panel panel-default">
-        <div class="panel-heading">Olá gerente!</div>
+        <div class="panel-heading">Olá funcionário!</div>
         <div class="panel-body jeito">Bem vindo de volta! Esta é a sua área de gerenciamento pensada especialmente para melhorar e agilizar o seu trabalho.</div>
       </div>
    </div> 
@@ -52,7 +51,7 @@
 </div>
  <div class="container-fluid">
   <div id="about" class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 bg-black">
       <h2>Gráficos de acompanhamento</h2><br>
       <h4>Pensando na sua empresa, inserimos alguns gráficos personalizados na sua página para melhor acompanhamento dos alunos matriculados na sua academia.</h4><br> 
     </div>
@@ -111,11 +110,7 @@
                        2]);
 
       var options = {
-<<<<<<< HEAD
-        title: "Legenda em baixo do gráfico",
-=======
-        title: "Legenda a baixo",
->>>>>>> cce3e05dc80e760b0b89a2947bc4010a429d0ee9
+        title: "Cores representadas ao lado",
         width: 600,
         height: 300,
         bar: {groupWidth: "55%"},
