@@ -1,3 +1,73 @@
+<?php
+ ob_start();
+ session_start();
+ require_once 'dbconnect.php';
+ 
+ // it will never let you open index(login) page if session is set
+ if ( isset($_SESSION['user'])!="" ) {
+  header("Location: atendimento.php");
+  exit;
+ }
+
+  if ( isset($_SESSION['user2'])!="" ) {
+  header("Location: gerenciamento.php");
+  exit;
+ }
+ 
+ $error = false;
+ 
+ if( isset($_POST['btn-login']) ) { 
+  
+  // prevent sql injections/ clear user invalid inputs
+  $email = trim($_POST['email']);
+  $email = strip_tags($email);
+  $email = htmlspecialchars($email);
+  
+  $pass = trim($_POST['pass']);
+  $pass = strip_tags($pass);
+  $pass = htmlspecialchars($pass);
+  // prevent sql injections / clear user invalid inputs
+  
+  if(empty($email)){
+   $error = true;
+   $emailError = "Por favor digite seu E-Mail.";
+  } 
+
+  if(empty($pass)){
+   $error = true;
+   $passError = "Por favor digite a senha.";
+  }
+  
+  // if there's no error, continue to login
+  if (!$error) {  
+
+
+   $res=mysql_query("SELECT * FROM funcionario WHERE Login='$email'");
+   $row=mysql_fetch_array($res);
+   $count = mysql_num_rows($res); // if uname/pass correct it returns must be 1 row
+   
+   if( $count == 1 && $row['Senha']==$pass && $row['Cargo'] == "Atendente" ) {
+    $_SESSION['user'] = "AA";
+    header("Location: atendimento.php");
+   } 
+   if ($count == 1 && $row['Senha']==$pass && $row['Cargo'] == "Gerente" )
+   {   	
+    $_SESSION['user2'] = "AA";
+    header("Location: gerenciamento.php");
+   }
+   if($email == "admin" && $pass == "admin12345")
+   {   	
+    $_SESSION['user2'] = "AA";
+    header("Location: gerenciamento.php");
+   }
+   else {
+    $errMSG = "Usuário ou senha errada , tente denovo...";
+   }
+    
+  }
+  
+ }
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -228,7 +298,7 @@
   <h2 class="text-center">CONTATE-NOS!</h2>
   <div class="row">
     <div class="col-sm-5">
-      <p>Entre em contato agora e se não responderem em 5 minutos a mãe de alguem morrerá.</p>
+      <p>Entre em contato agora.</p>
       <p><span class="glyphicon glyphicon-map-marker"></span> Pernambuco, Brasil</p>
       <p><span class="glyphicon glyphicon-phone"></span> +55 1515151515</p>
       <p><span class="glyphicon glyphicon-envelope"></span> meuemail@algumacoisa.com</p>
@@ -308,30 +378,42 @@ $(document).ready(function(){
     
       <!-- Modal content-->
       <div class="modal-content">
+      <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">      	
         <div class="modal-header" style="padding:35px 50px;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 id="cabecalho"><span class="glyphicon glyphicon-lock"></span> Login</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
           <form role="form">
+               <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
+            
             <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Usuário</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Digite seu email">
+             <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+             <input type="text" name="email" class="form-control" placeholder="E-Mail" value="<?php echo $email; ?>" maxlength="40" />
+                </div>
+                <span class="text-danger"><?php echo $emailError; ?></span>
             </div>
+            
             <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
-              <input type="password" class="form-control" id="psw" placeholder="Digite sua senha">
+             <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+             <input type="password" name="pass" class="form-control" placeholder="Senha" maxlength="15" />
+                </div>
+                <span class="text-danger"><?php echo $passError; ?></span>
             </div>
-            <div class="checkbox">
-              <label><input type="checkbox" value="" checked>Lembrar</label>
+            
+            <div class="form-group">
+             <hr />
             </div>
-              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+            
+            <div class="form-group">
+             <button type="submit" class="btn btn-block btn-primary" name="btn-login">Entrar</button>
+            </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-          <p>Não tem uma conta? <a href="telaCadastro.html">Registre-se</a></p>
-          <p>Esqueceu <a href="#">a senha?</a></p>
+          <button type="submit" class="btn btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>          
         </div>
       </div>
       

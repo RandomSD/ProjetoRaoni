@@ -3,8 +3,19 @@
  $query ="SELECT *, DATE_FORMAT(Nasc_Al,'%d/%m/%Y') AS niceDate , DATE_FORMAT(DataEntrada,'%d/%m/%Y') AS niceDate2 
 FROM aluno;";  
  $result = mysqli_query($connect, $query);
+ ?> 
+ <?php  
+ ob_start();
+ session_start();
+ ?>
 
-  ?> 
+  <?php
+ if(($_SESSION['user']) == "" ) {
+  header("Location: negado.html");
+  exit;
+ }
+
+ ?>
 
 <!DOCTYPE html>
 <html>

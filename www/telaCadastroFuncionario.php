@@ -1,9 +1,5 @@
 <?php
- ob_start();
- session_start();
- if( isset($_SESSION['user'])!="" ){
-  header("Location: negado.html");
- }
+ 
  include_once 'dbconnect.php';
 
  $error = false;
@@ -107,6 +103,18 @@
   
  }
 ?>
+  <?php  
+ ob_start();
+ session_start();
+ ?>
+
+  <?php
+ if(($_SESSION['user2']) == "" ) {
+  header("Location: negado.html");
+  exit;
+ }
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>

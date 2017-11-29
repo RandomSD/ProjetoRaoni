@@ -4,6 +4,18 @@
 FROM funcionario";  
  $result = mysqli_query($connect, $query);
  ?>  
+   <?php  
+ ob_start();
+ session_start();
+ ?>
+
+  <?php
+ if(($_SESSION['user2']) == "" ) {
+  header("Location: negado.html");
+  exit;
+ }
+
+ ?>
  <!DOCTYPE html>  
  <html>  
       <head>  

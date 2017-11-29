@@ -41,6 +41,19 @@
    $cidade4 = mysql_num_rows($result);
   ?>
 
+  <?php  
+ ob_start();
+ session_start();
+ ?>
+
+  <?php
+ if(($_SESSION['user2']) == "" ) {
+  header("Location: atendimento.php");
+  exit;
+ }
+
+ ?> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,8 +81,7 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="telaConsultaFuncionario.php">GERENCIAR FUNCIONÁRIOS</a></li>
-          <li><a href="telaConsultaAluno.php">GERENCIAR ALUNOS</a></li>
-          <li><a href="index.php">SAIR</a></li>
+          <li><a href="logout.php?logout">SAIR</a></li>
           
         </ul>
       </div>
