@@ -1,3 +1,46 @@
+<?php
+ include_once 'dbconnect.php';
+   $query = "SELECT Sexo_Al FROM aluno WHERE Sexo_Al='MASCULINO'";
+   $result = mysql_query($query);
+   $count = mysql_num_rows($result);
+  ?>
+  <?php
+ include_once 'dbconnect.php';
+   $query = "SELECT Sexo_Al FROM aluno WHERE Sexo_Al='FEMININO'";
+   $result = mysql_query($query);
+   $count2 = mysql_num_rows($result);
+  ?>
+  <?php
+ include_once 'dbconnect.php';
+   $query = "SELECT Sexo_Al FROM aluno WHERE Sexo_Al='OUTRO'";
+   $result = mysql_query($query);
+   $count3 = mysql_num_rows($result);
+  ?>
+  <?php
+ include_once 'dbconnect.php';
+   $query = "SELECT Cidade_Al FROM aluno WHERE Cidade_Al='Jaboatão dos Guararapes'";
+   $result = mysql_query($query);
+   $cidade1 = mysql_num_rows($result);
+  ?>
+    <?php
+ include_once 'dbconnect.php';
+   $query = "SELECT Cidade_Al FROM aluno WHERE Cidade_Al='Recife'";
+   $result = mysql_query($query);
+   $cidade2 = mysql_num_rows($result);
+  ?>
+  <?php
+ include_once 'dbconnect.php';
+   $query = "SELECT Cidade_Al FROM aluno WHERE Cidade_Al='Olinda'";
+   $result = mysql_query($query);
+   $cidade3 = mysql_num_rows($result);
+  ?>
+  <?php
+ include_once 'dbconnect.php';
+   $query = "SELECT Cidade_Al FROM aluno WHERE Cidade_Al='Paulista'";
+   $result = mysql_query($query);
+   $cidade4 = mysql_num_rows($result);
+  ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +66,7 @@
         <a class="navbar-brand" href="index.html">Logo</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">          
+        <ul class="nav navbar-nav navbar-right">         
           <li><a href="telaConsultaAluno.php">GERENCIAR ALUNOS</a></li>
           <li><a href="index.php">SAIR</a></li>
           
@@ -68,9 +111,9 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Sexo', 'Quantidade'],
-          ['Feminino',     11],
-          ['Masculino',      7],
-          ['Outros',  2],
+          ['Feminino',     <?php echo $count2 ?>],
+          ['Masculino',   <?php echo $count ?>],
+          ['Outros',  <?php echo $count3 ?>],
         ]);
 
         var options = {
@@ -95,10 +138,10 @@
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ["Quantidade", "alunos", { role: "style" } ],
-        ["Paulista", 10, "#b87333"],
-        ["Torrinha", 10, "silver"],
-        ["Recife", 19, "gold"],
-        ["Jaboatão", 21, "color: #e5e4e2"]
+        ["Jaboatão", <?php echo $cidade1 ?>, "#b87333"],
+        ["Recife", <?php echo $cidade2 ?>, "silver"],
+        ["Olinda", <?php echo $cidade3 ?>, "gold"],
+        ["Paulista", <?php echo $cidade4 ?>, "color: #e5e4e2"]
       ]);
 
       var view = new google.visualization.DataView(data);
@@ -145,3 +188,4 @@
 
 
 </html>
+?>
